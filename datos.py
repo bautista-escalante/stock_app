@@ -70,11 +70,12 @@ def mostrar_elemento(elemento:str)->list:
             print("Error")
 
 def mostrar_categoria(categoria):
+    """retorna una tupla de listas"""
     with sqlite3.connect("stock.db") as conexion: 
         try: 
             #### imprimir en pantalla #### 
             cursor = conexion.execute("SELECT * FROM stock WHERE categoria = ?", (categoria,))
             datos = cursor.fetchall()
             return datos
-        except Exception:
-            print("Error")
+        except Exception as e:
+            print("Error",e)
